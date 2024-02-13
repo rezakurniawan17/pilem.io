@@ -14,16 +14,23 @@ export default function MovieCard({ item }: any) {
         />
       </div>
       <div className="my-1">
-        <Link href="/">
-          {item.media_type && (
-            <h6 className="text-base font-semibold">
-              {item.media_type === "movie" ? `${item.title}` : `${item.name}`}
-            </h6>
-          )}
-          {!item.media_type && (
+        {item.media_type && (
+          <Link href={`/${item.media_type}/${item.id}`}>
+            {item.media_type && (
+              <h6 className="text-base font-semibold">
+                {item.media_type === "movie" ? `${item.title}` : `${item.name}`}
+              </h6>
+            )}
+            {!item.media_type && (
+              <h6 className="text-base font-semibold">{item.title}</h6>
+            )}
+          </Link>
+        )}
+        {!item.media_type && (
+          <Link href={`/movie/${item.id}`}>
             <h6 className="text-base font-semibold">{item.title}</h6>
-          )}
-        </Link>
+          </Link>
+        )}
         {item.media_type && (
           <p className="text-xs opacity-60">
             {item.media_type === "movie"
