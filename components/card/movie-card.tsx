@@ -4,7 +4,7 @@ import { format } from "date-fns";
 
 export default function MovieCard({ item }: any) {
   return (
-    <>
+    <div>
       <div className="aspect-[9/16] relative">
         <Image
           src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -27,8 +27,14 @@ export default function MovieCard({ item }: any) {
           </Link>
         )}
         {!item.media_type && (
-          <Link href={`/movie/${item.id}`}>
-            <h6 className="text-base font-semibold">{item.title}</h6>
+          <Link
+            href={`${
+              item.first_air_date ? `tv/${item.id}` : `movie/${item.id}`
+            }`}
+          >
+            <h6 className="text-base font-semibold">
+              {item.title ? `${item.title}` : `${item.name}`}
+            </h6>
           </Link>
         )}
         {item.media_type && (
@@ -40,10 +46,15 @@ export default function MovieCard({ item }: any) {
         )}
         {!item.media_type && (
           <p className="text-xs opacity-60">
-            {format(new Date(item.release_date), "d MMMM yyyy")}
+            {item.release_date
+              ? format(new Date(item.release_date), "d MMMM yyyy")
+              : ""}{" "}
+            {item.first_air_date
+              ? format(new Date(item.first_air_date), "d MMMM yyyy")
+              : ""}
           </p>
         )}
       </div>
-    </>
+    </div>
   );
 }

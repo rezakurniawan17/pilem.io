@@ -1,12 +1,12 @@
 import { getTrending } from "@/actions/getTrending";
-import { getPopular } from "@/actions/getPopular";
+import { getPopularMovie } from "@/actions/getPopularMovie";
 import ListCarousel from "@/components/carousel/list-carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default async function App() {
   const trendingToday = await getTrending("day");
   const trendingThisWeek = await getTrending("week");
-  const popular = await getPopular();
+  const popular = await getPopularMovie();
   return (
     <div className="h-full">
       <Tabs defaultValue="today" className="w-full">

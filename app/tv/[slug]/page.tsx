@@ -61,7 +61,7 @@ export default async function DetailTVShowPage({
               className="w-full mt-1"
             >
               <CarouselContent>
-                {credit.cast.map((c: any) => (
+                {credit.cast.slice(0, 10).map((c: any) => (
                   <CarouselItem
                     key={c.id}
                     className="basis-1/2 sm:basis-1/3 lg:basis-1/4"
