@@ -1,5 +1,5 @@
+import Link from "next/link";
 import Image from "next/image";
-import { format } from "date-fns";
 import {
   Carousel,
   CarouselContent,
@@ -7,7 +7,6 @@ import {
 } from "@/components/ui/carousel";
 import { getDetailMovie } from "@/actions/getDetailMovie";
 import { getMovieCredit } from "@/actions/getMovieCredit";
-import Link from "next/link";
 import { icons } from "@/components/icons";
 export default async function DetailMoviePage({
   params,
@@ -75,7 +74,9 @@ export default async function DetailMoviePage({
                         alt={c.name}
                       />
                     </div>
-                    <span className="font-medium mt-1 block">{c.name}</span>
+                    <Link href={`/people/${c.id}`}>
+                      <span className="font-medium mt-1 block">{c.name}</span>
+                    </Link>
                   </CarouselItem>
                 ))}
               </CarouselContent>

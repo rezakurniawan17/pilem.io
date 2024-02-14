@@ -74,7 +74,9 @@ export default async function DetailTVShowPage({
                         alt={c.name}
                       />
                     </div>
-                    <span className="font-medium mt-1 block">{c.name}</span>
+                    <Link href={`/people/${c.id}`}>
+                      <span className="font-medium mt-1 block">{c.name}</span>
+                    </Link>
                   </CarouselItem>
                 ))}
               </CarouselContent>

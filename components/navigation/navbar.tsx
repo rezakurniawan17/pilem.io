@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 import Link from "next/link";
 import { icons } from "@/components/icons";
@@ -6,9 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { links } from "@/config/nav";
 import { cn } from "@/lib/utils";
-
 export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [search, setSearch] = React.useState<string>("");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push(`/search?query=${search}`);
+  };
   return (
     <div className="w-full py-4 border-b">
       <div className="px-4 mx-auto max-w-7xl">
@@ -35,11 +41,15 @@ export default function Navbar() {
             {links.map((link) => (
               <ListItem key={link.name} href={link.href} title={link.name} />
             ))}
-            <Input
-              className="w-[300px]"
-              placeholder="Search Movie, TV Show, People"
-              type="text"
-            />
+            <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
+              <Input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-[300px]"
+                placeholder="Search Movie, TV Show, People"
+                type="text"
+              />
+            </form>
           </div>
         </nav>
 
@@ -51,11 +61,15 @@ export default function Navbar() {
                 <ListItem key={link.name} href={link.href} title={link.name} />
               ))}
             </div>
-            <Input
-              className="mt-4"
-              placeholder="Search Movie, TV Show, People"
-              type="text"
-            />
+            <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
+              <Input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="mt-4"
+                placeholder="Search Movie, TV Show, People"
+                type="text"
+              />
+            </form>
           </div>
         )}
       </div>
