@@ -14,6 +14,8 @@ export default function Navbar() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     router.push(`/search?query=${search}`);
+    router.refresh();
+    setSearch("");
   };
   return (
     <div className="w-full py-4 border-b">
