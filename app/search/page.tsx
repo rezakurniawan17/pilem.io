@@ -1,7 +1,6 @@
 "use client";
 import { Suspense, useEffect, useState } from "react";
 import { options } from "@/tmdb/config";
-import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,9 +9,9 @@ function SeachPageFallback() {
 }
 
 export default function SearchBar() {
-  const searchParams = useSearchParams();
+  let params = new URLSearchParams(document.location.search);
+  let query = params.get("query");
   const [result, setResult] = useState([]);
-  const search = searchParams.get("query");
   useEffect(() => {
     async function getMultiSearch(query: string) {
       const res = await fetch(
@@ -23,8 +22,8 @@ export default function SearchBar() {
       return setResult(json.results);
     }
 
-    getMultiSearch(search as string);
-  }, [search]);
+    getMultiSearch(query as string);
+  }, [query]);
   return (
     <Suspense fallback={<SeachPageFallback />}>
       <div className="min-h-screen w-full">

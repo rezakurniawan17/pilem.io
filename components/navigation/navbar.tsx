@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { links } from "@/config/nav";
 import { cn } from "@/lib/utils";
-import { Suspense } from "react";
 export default function Navbar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
