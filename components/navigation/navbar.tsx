@@ -13,7 +13,7 @@ export default function Navbar() {
   const [search, setSearch] = React.useState<string>("");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/search?query=${search}`);
+    router.push(`/search/${search}`);
     router.refresh();
     setSearch("");
   };
