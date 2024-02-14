@@ -44,17 +44,15 @@ export default function Navbar() {
             {links.map((link) => (
               <ListItem key={link.name} href={link.href} title={link.name} />
             ))}
-            <Suspense>
-              <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
-                <Input
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="w-[300px]"
-                  placeholder="Search Movie, TV Show, People"
-                  type="text"
-                />
-              </form>
-            </Suspense>
+            <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
+              <Input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-[300px]"
+                placeholder="Search Movie, TV Show, People"
+                type="text"
+              />
+            </form>
           </div>
         </nav>
 
@@ -66,17 +64,15 @@ export default function Navbar() {
                 <ListItem key={link.name} href={link.href} title={link.name} />
               ))}
             </div>
-            <Suspense>
-              <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
-                <Input
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="mt-4"
-                  placeholder="Search Movie, TV Show, People"
-                  type="text"
-                />
-              </form>
-            </Suspense>
+            <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
+              <Input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="mt-4"
+                placeholder="Search Movie, TV Show, People"
+                type="text"
+              />
+            </form>
           </div>
         )}
       </div>
