@@ -4,6 +4,11 @@ import { options } from "@/tmdb/config";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
+function SeachPageFallback() {
+  return <div>Loading</div>;
+}
+
 export default function SearchBar() {
   const searchParams = useSearchParams();
   const [result, setResult] = useState([]);
@@ -21,7 +26,7 @@ export default function SearchBar() {
     getMultiSearch(search as string);
   }, [search]);
   return (
-    <Suspense>
+    <Suspense fallback={<SeachPageFallback />}>
       <div className="min-h-screen w-full">
         <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-5 gap-5">
           {result?.map((item: any) => (
