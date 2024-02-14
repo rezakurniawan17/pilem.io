@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { links } from "@/config/nav";
 import { cn } from "@/lib/utils";
+import { Suspense } from "react";
 export default function Navbar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -43,15 +44,17 @@ export default function Navbar() {
             {links.map((link) => (
               <ListItem key={link.name} href={link.href} title={link.name} />
             ))}
-            <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
-              <Input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-[300px]"
-                placeholder="Search Movie, TV Show, People"
-                type="text"
-              />
-            </form>
+            <Suspense>
+              <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
+                <Input
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-[300px]"
+                  placeholder="Search Movie, TV Show, People"
+                  type="text"
+                />
+              </form>
+            </Suspense>
           </div>
         </nav>
 
@@ -63,15 +66,17 @@ export default function Navbar() {
                 <ListItem key={link.name} href={link.href} title={link.name} />
               ))}
             </div>
-            <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
-              <Input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="mt-4"
-                placeholder="Search Movie, TV Show, People"
-                type="text"
-              />
-            </form>
+            <Suspense>
+              <form onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
+                <Input
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="mt-4"
+                  placeholder="Search Movie, TV Show, People"
+                  type="text"
+                />
+              </form>
+            </Suspense>
           </div>
         )}
       </div>
