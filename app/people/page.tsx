@@ -4,7 +4,7 @@ import Image from "next/image";
 export default async function PersonPage() {
   const data = await getPopularPeople();
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full">
       <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-6 gap-5">
         {data.map((item: any) => (
           <div key={item.id} className="basis-">

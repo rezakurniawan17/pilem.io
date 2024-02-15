@@ -25,7 +25,7 @@ export default async function DetailTVShowPage({
         </Link>
       </div>
       <div className="w-full flex flex-col md:space-x-6 lg:space-x-10 md:flex-row">
-        <div className="relative aspect-auto md:w-6/12 lg:w-4/12">
+        <div className="relative aspect-[9/16] md:w-6/12 lg:w-4/12">
           <Image
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt=""

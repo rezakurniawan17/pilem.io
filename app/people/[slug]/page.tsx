@@ -8,7 +8,7 @@ export default async function PersonPage({
 }) {
   const data = await getDetailPeople(params.slug);
   return (
-    <div className="w-full h-screen">
+    <div className="w-full">
       <div className="flex space-x-0 md:space-x-10 flex-col md:flex-row">
         <div className="relative aspect-[9/16] w-[320px] lg:w-4/12">
           <Image

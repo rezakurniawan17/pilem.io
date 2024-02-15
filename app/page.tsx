@@ -14,7 +14,7 @@ export default async function App() {
   ]);
 
   return (
-    <div className="h-full">
+    <div>
       <Tabs defaultValue="today" className="w-full">
         <span className="mr-3 text-2xl font-bold">Trending</span>
         <TabsList>

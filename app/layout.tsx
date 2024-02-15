@@ -21,11 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="w-full min-h-screen antialiased bg-background">
-            <div className="flex flex-col">
+          <div className="w-full antialiased h-full bg-background">
+            <div className="min-h-screen flex flex-col">
               <Navbar />
-              <main className="w-full min-h-screen">
-                <div className="px-4 mx-auto my-4 max-w-7xl">{children}</div>
+              <main className="flex-1">
+                <div className="px-4 mx-auto my-4 h-full max-w-7xl">
+                  {children}
+                </div>
               </main>
               <Footer />
             </div>
