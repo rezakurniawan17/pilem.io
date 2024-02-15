@@ -13,8 +13,12 @@ export default async function DetailMoviePage({
 }: {
   params: { slug: string };
 }) {
-  const data = await getDetailMovie(params.slug);
-  const credit = await getMovieCredit(params.slug);
+  const movieDetailData = await getDetailMovie(params.slug);
+  const creditData = await getMovieCredit(params.slug);
+  const [movieDetail, credit] = await Promise.all([
+    movieDetailData,
+    creditData,
+  ]);
   return (
     <div className=" w-full my-4">
       <div className="mb-3">
@@ -26,7 +30,7 @@ export default async function DetailMoviePage({
       <div className="w-full flex flex-col md:space-x-6 lg:space-x-10 md:flex-row">
         <div className="relative aspect-auto md:w-6/12 lg:w-5/12">
           <Image
-            src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500${movieDetail.poster_path}`}
             alt=""
             fill
             className="object-cover rounded-xl"
@@ -34,14 +38,14 @@ export default async function DetailMoviePage({
         </div>
         <div className="py-6 sm:py-3 md:w-6/12 lg:w-7/12">
           <h3 className="text-3xl mb-1 font-bold">
-            {data.title}{" "}
+            {movieDetail.title}{" "}
             <span className="font-normal">
-              ({new Date(data.release_date).getFullYear()})
+              ({new Date(movieDetail.release_date).getFullYear()})
             </span>
           </h3>
           <span className="block text-sm text-muted-foreground">
             <span className="inline-flex space-x-2">
-              {data.genres.map((g: any) => (
+              {movieDetail.genres.map((g: any) => (
                 <span key={g.id}>{g.name}</span>
               ))}
             </span>
@@ -49,7 +53,7 @@ export default async function DetailMoviePage({
           <div className="my-4">
             <span className="text-lg block font-bold">Overview</span>
             <span className="text-muted-foreground sm:text-base text-sm">
-              {data.overview}
+              {movieDetail.overview}
             </span>
           </div>
           <div className="">

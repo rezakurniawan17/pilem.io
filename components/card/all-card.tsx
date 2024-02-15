@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { format } from "date-fns";
+import { formatDate } from "@/lib/date";
 
 export default function MovieCard({ item }: any) {
   return (
@@ -22,8 +22,8 @@ export default function MovieCard({ item }: any) {
         {item.media_type && (
           <p className="text-xs opacity-60">
             {item.media_type === "movie"
-              ? `${format(new Date(item.release_date), "d MMMM yyyy")}`
-              : `${format(new Date(item.first_air_date), "d MMMM yyyy")}`}
+              ? `${formatDate(item.release_date)}`
+              : `${formatDate(item.first_air_date)}`}
           </p>
         )}
       </div>

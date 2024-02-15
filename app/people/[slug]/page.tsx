@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { getDetailPeople } from "@/actions/getDetailPeople";
-import { format } from "date-fns";
-import { Carousel, CarouselContent } from "@/components/ui/carousel";
-
+import { formatDate } from "@/lib/date";
 export default async function PersonPage({
   params,
 }: {
@@ -28,7 +26,7 @@ export default async function PersonPage({
           <div className="flex flex-col">
             <span className="font-bold text-lg">Birthday</span>
             <span className="text-muted-foreground">
-              {format(new Date(data.birthday), "d MMMM yyyy")}
+              {formatDate(data.birthday)}
             </span>
           </div>
           <div className="flex flex-col">

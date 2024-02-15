@@ -4,9 +4,15 @@ import ListCarousel from "@/components/carousel/list-carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default async function App() {
-  const trendingToday = await getTrending("day");
-  const trendingThisWeek = await getTrending("week");
-  const popular = await getPopularMovie();
+  const trendingTodayData = await getTrending("day");
+  const trendingThisWeekData = await getTrending("week");
+  const popularData = await getPopularMovie();
+  const [trendingToday, trendingThisWeek, popular] = await Promise.all([
+    trendingThisWeekData,
+    trendingTodayData,
+    popularData,
+  ]);
+
   return (
     <div className="h-full">
       <Tabs defaultValue="today" className="w-full">

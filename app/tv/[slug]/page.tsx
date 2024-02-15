@@ -13,8 +13,9 @@ export default async function DetailTVShowPage({
 }: {
   params: { slug: string };
 }) {
-  const data = await getDetailTVShow(params.slug);
-  const credit = await getTVShowCredit(params.slug);
+  const detailTVShowData = await getDetailTVShow(params.slug);
+  const creditData = await getTVShowCredit(params.slug);
+  const [data, credit] = await Promise.all([detailTVShowData, creditData]);
   return (
     <div className=" w-full my-4">
       <div className="mb-3">
