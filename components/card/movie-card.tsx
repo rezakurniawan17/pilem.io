@@ -1,10 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/lib/date";
+import { MotionDiv } from "@/components/motion-div";
+
+const variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+  },
+};
 
 export default function MovieCard({ item }: any) {
   return (
-    <div>
+    <MotionDiv
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
+      viewport={{ amount: 0 }}
+    >
       <div className="aspect-[9/16] relative">
         <Image
           loading="lazy"
@@ -52,6 +66,6 @@ export default function MovieCard({ item }: any) {
           </p>
         )}
       </div>
-    </div>
+    </MotionDiv>
   );
 }

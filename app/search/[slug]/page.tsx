@@ -1,9 +1,11 @@
 "use client";
+import MotionPage from "@/components/motion-page";
 import { useEffect, useState } from "react";
 import { options } from "@/tmdb/config";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
 export default function SearchBar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -21,10 +23,20 @@ export default function SearchBar() {
     getMultiSearch(pathname.slice(8, pathname.length) as string);
   }, [pathname, searchParams]);
   return (
-    <div className="min-h-screen w-full">
+    <MotionPage className="min-h-screen w-full">
       <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-5 gap-5">
-        {result?.map((item: any) => (
-          <div key={item.id} className="flex flex-col space-y-1">
+        {result?.map((item: any, index) => (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{
+              delay: index * 0.1,
+              duration: 0.5,
+              ease: "easeInOut",
+            }}
+            key={item.id}
+            className="flex flex-col space-y-1"
+          >
             <div className="relative aspect-[9/16]">
               <Image
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -38,9 +50,9 @@ export default function SearchBar() {
                 {item.name ? item.name : item.title}
               </Link>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </MotionPage>
   );
 }
