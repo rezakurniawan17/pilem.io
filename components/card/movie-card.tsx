@@ -7,6 +7,7 @@ export default function MovieCard({ item }: any) {
     <div>
       <div className="aspect-[9/16] relative">
         <Image
+          loading="lazy"
           src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
           alt=""
           fill

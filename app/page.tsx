@@ -2,6 +2,8 @@ import { getTrending } from "@/actions/getTrending";
 import { getPopularMovie } from "@/actions/getPopularMovie";
 import ListCarousel from "@/components/carousel/list-carousel";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default async function App() {
   const trendingTodayData = await getTrending("day");
@@ -14,7 +16,7 @@ export default async function App() {
   ]);
 
   return (
-    <div>
+    <Suspense fallback={<Loading />}>
       <Tabs defaultValue="today" className="w-full">
         <span className="mr-3 text-2xl font-bold">Trending</span>
         <TabsList>
@@ -31,6 +33,6 @@ export default async function App() {
       <div>
         <ListCarousel header="Popular Movie" data={popular} />
       </div>
-    </div>
+    </Suspense>
   );
 }

@@ -24,7 +24,7 @@ export default function Navbar() {
           {/* Brand */}
           <div className="flex items-center justify-between w-full shrink-0 md:w-fit">
             <Link href="/" className="inline-flex items-center flex-shrink-0">
-              <icons.clapperboard className="w-6 h-6 mr-2 " />
+              <icons.clapperboard className="w-7 h-7 mr-2 -rotate-12" />
               <h6 className="text-xl font-bold">Pilem.io</h6>
             </Link>
             <div className="flex md:hidden">
