@@ -18,11 +18,13 @@ export default async function App() {
   return (
     <Suspense fallback={<Loading />}>
       <Tabs defaultValue="today" className="w-full">
-        <span className="mr-3 text-2xl font-bold">Trending</span>
-        <TabsList>
-          <TabsTrigger value="today">Today</TabsTrigger>
-          <TabsTrigger value="week">This Week</TabsTrigger>
-        </TabsList>
+        <div className="flex space-x-4 items-center">
+          <span className="text-3xl font-semibold">Trending</span>
+          <TabsList>
+            <TabsTrigger value="today">Today</TabsTrigger>
+            <TabsTrigger value="week">This Week</TabsTrigger>
+          </TabsList>
+        </div>
         <TabsContent value="today">
           <ListCarousel data={trendingToday} />
         </TabsContent>

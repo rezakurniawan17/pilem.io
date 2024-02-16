@@ -29,6 +29,8 @@ export default function Navbar() {
             </Link>
             <div className="flex md:hidden">
               <Button
+                id="mobile-menu-button"
+                aria-label="Menu Button"
                 variant={"ghost"}
                 size={"icon"}
                 onClick={() => setIsOpen(!isOpen)}
